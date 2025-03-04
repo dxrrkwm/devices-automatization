@@ -3,7 +3,7 @@ from unittest.mock import patch
 from refs.scanner_handler import CheckQr
 
 class TestQrScannerFlow:
-    # valid QR lengths
+    # valid QR lengths, device in DB
     @pytest.mark.parametrize(
         "qr_input, expected_color",
         [
@@ -19,7 +19,7 @@ class TestQrScannerFlow:
         scanner.check_scanned_device(qr_input)
         assert scanner.color == expected_color, f"Expected {expected_color} for QR '{qr_input}', got {scanner.color}"
 
-    # invalid QR lengths
+    # invalid QR lengths, no color assigned
     @pytest.mark.parametrize(
         "qr_input, expected_error",
         [
@@ -39,7 +39,7 @@ class TestQrScannerFlow:
         mock_send_error.assert_called_once_with(expected_error)
         assert scanner.color is None, f"Color should be None for invalid QR '{qr_input}'"
 
-    # valid length but device not in DB
+    # valid length, device not in DB
     @pytest.mark.parametrize(
         "qr_input",
         [
