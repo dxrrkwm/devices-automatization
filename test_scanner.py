@@ -23,11 +23,11 @@ class TestQrScannerFlow:
     @pytest.mark.parametrize(
         "qr_input, expected_error",
         [
-            ("a", f"Error: Wrong qr length 1"),
-            ("ab", f"Error: Wrong qr length 2"),
-            ("abcd", f"Error: Wrong qr length 4"),
-            ("abcdef", f"Error: Wrong qr length 6"),
-            ("abcdefgh", f"Error: Wrong qr length 8")
+            ("a", "Error: Wrong qr length 1"),
+            ("ab", "Error: Wrong qr length 2"),
+            ("abcd", "Error: Wrong qr length 4"),
+            ("abcdef", "Error: Wrong qr length 6"),
+            ("abcdefgh", "Error: Wrong qr length 8")
         ],
         ids=["QR_len_1", "QR_len_2", "QR_len_4", "QR_len_6", "QR_len_8"]
     )
