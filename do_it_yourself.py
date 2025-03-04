@@ -44,12 +44,12 @@ def parse_log_file():
 def main():
     total_big_messages, big_handler_ok_count, failed_devices = parse_log_file()
 
-    print(f"All big messages: {total_big_messages}")
-    print(f"Successful big messages: {len(big_handler_ok_count)}")
+    print(f"All big messages: {len(big_handler_ok_count)}")
+    print(f"Successful big messages: {len(big_handler_ok_count) - len(failed_devices)}")
     print(f"Failed big messages: {len(failed_devices)}\n")
 
     for device_id, errors in failed_devices.items():
-        print(f"{device_id}: {', '.join(errors)}")
+        print(f"{device_id}: {errors[0]}")
 
     print("\nSuccess messages count:")
     for device_id, count in big_handler_ok_count.items():
